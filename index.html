@@ -120,6 +120,155 @@ details{border-top:1px solid var(--line);padding:12px 0}details summary{cursor:p
 .fg2{display:grid;gap:2px 14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.fg2 input,.fg2 select{width:100%}
 .err{color:#b3261e;font-size:13px;min-height:20px}
 .okb{border:1px solid var(--gold);padding:20px;margin-top:18px}.okb h3{font-size:24px}
+
+/* ===== CELESTETARA PREMIUM MOTION ===== */
+
+/* Hero background slow movement */
+.hero {
+  background-size: 140% 140%;
+  animation: heroGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* Hero text */
+.hero h1 {
+  animation: rise 1.4s ease both;
+}
+
+.hero p {
+  animation: rise 1.5s ease both;
+}
+
+.hero .btns {
+  animation: rise 1.8s ease both;
+}
+
+/* Premium product hover */
+.card {
+  transition: transform .45s ease, opacity .4s ease;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+}
+
+.card .ph img {
+  transition: transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.card:hover .ph img {
+  transform: scale(1.045);
+}
+
+/* Collection cards */
+.tile {
+  overflow: hidden;
+  transition: transform .45s ease;
+}
+
+.tile:hover {
+  transform: translateY(-6px);
+}
+
+.tile .ph {
+  transition: transform .7s ease;
+}
+
+.tile:hover .ph {
+  transform: scale(1.025);
+}
+
+/* Buttons */
+.btn,
+.add,
+.chip {
+  transition: all .3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.add:hover {
+  transform: translateY(-2px);
+}
+
+/* Gemstone hover */
+.gs button .bead {
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.gs button:hover .bead {
+  transform: scale(1.12);
+  box-shadow: 0 0 18px #d6b77955;
+}
+
+/* Custom bracelet stones */
+.sw button {
+  transition: transform .25s ease, box-shadow .3s ease;
+}
+
+.sw button:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 15px #d6b77966;
+}
+
+/* Section heading luxury underline */
+.h2 {
+  position: relative;
+}
+
+section .h2::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 1px;
+  background: var(--gold);
+  margin-top: 13px;
+  transition: width .5s ease;
+}
+
+section:hover .h2::after {
+  width: 75px;
+}
+
+/* Smooth image transitions */
+.ph img {
+  transition: opacity .35s ease, transform .6s ease;
+}
+
+/* Cart drawer */
+#drawer {
+  transition: transform .4s cubic-bezier(.22,.61,.36,1);
+}
+
+/* WhatsApp subtle glow */
+.wa {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px #0008;
+}
+
+/* Respect reduced motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .hero h1,
+  .hero p,
+  .hero .btns {
+    animation: none !important;
+  }
+
+  * {
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
 <body>
