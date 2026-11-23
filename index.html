@@ -42,6 +42,34 @@ nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--gold)}
 .btn.o{background:transparent;color:var(--gold)}.btn.o:hover{background:var(--gold);color:var(--black)}
 .rg{position:relative;width:min(78vw,340px);aspect-ratio:1;margin:0 auto}
 .rg::after{content:"";position:absolute;inset:6%;border:1px solid #c9a96e44;border-radius:50%;pointer-events:none}
+
+#hr.rg {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 1;
+  background: #160d10;
+}
+
+#hr.rg::after {
+  display: none;
+}
+
+#hr .hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#hr .hero-slide.active {
+  opacity: 1;
+}
+
 .bead{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 26%,#fffa 0,#fff0 26%),radial-gradient(circle at 62% 72%,#0006,#0000 62%),var(--c)}
 .bead.e{background:none;border:1px dashed #c9a96e88}
 @media(min-width:860px){.hero .wrap{grid-template-columns:1.2fr 1fr}.hero{padding:92px 0}}
@@ -490,7 +518,30 @@ var CG={warm:"Warm golds and ambers",cool:"Cool blues and violets",dark:"Deep bl
 function fmt(x){return "₹"+x.toLocaleString("en-IN")}
 function bd(n,c,d,R){var s="",a,dm=d||Math.min(24,237/n*.95);R=R||42;for(var i=0;i<n;i++){a=i*2*Math.PI/n;s+='<span class="bead" style="--c:'+(Array.isArray(c)?c[i%c.length]:c)+';width:'+dm+'%;height:'+dm+'%;margin:-'+dm/2+'%;left:'+(50+R*Math.sin(a))+'%;top:'+(50-R*Math.cos(a))+'%"></span>'}return s}
 function mn(c){return '<div class="mn">'+bd(8,c,18,40)+'</div>'}
-$("hr").innerHTML=bd(14,["#c9a96e","#5a1624","#2b2833","#e8d9b8"],17,42);
+
+var heroPhotos = [
+  "images/hero/rose-quartz.jpg",
+  "images/hero/pearl.jpg",
+  "images/hero/amethyst.jpg",
+  "images/hero/green-aventurine.jpg",
+  "images/hero/citrine.jpg"
+];
+
+var heroIndex = 0;
+
+$("hr").innerHTML = heroPhotos.map(function(src, i) {
+  return '<img class="hero-slide' + (i === 0 ? ' active' : '') +
+    '" src="' + src + '" alt="CELESTETARA gemstone bracelet">';
+}).join("");
+
+var heroSlides = $("hr").querySelectorAll(".hero-slide");
+
+setInterval(function() {
+  heroSlides[heroIndex].classList.remove("active");
+  heroIndex = (heroIndex + 1) % heroSlides.length;
+  heroSlides[heroIndex].classList.add("active");
+}, 5000);
+
 $("cl").innerHTML=[["Gemstone Bracelets","From ₹700","#8a5cc7","#bracelets"],["Loose Gemstones","Hand-picked singles","#c9a96e","#gemstones"],["Gemstone Trees","For home and desk","#1f7a52","#trees"]].map(function(x){return '<a class="tile" href="'+x[3]+'"><div class="ph">'+mn(x[2])+'<small>Photo placeholder</small></div><div class="t"><h3>'+x[0]+'</h3><span>'+x[1]+'</span></div></a>'}).join("");
 $("gs").innerHTML=P.map(function(x){return '<button data-s="'+x.s+'"><span class="bead" style="--c:'+x.c+'"></span>'+x.s+'</button>'}).join("");
 $("ins").innerHTML=Object.keys(I).map(function(k){return '<button class="it" data-i="'+k+'"><h3>'+I[k][0]+'</h3><p>'+I[k][1]+'</p></button>'}).join("");
