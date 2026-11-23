@@ -435,7 +435,7 @@ if(cpn)applyC(cpn,true);
   function showProductVideo(){
     var m=location.hash.match(/^#product-(\d+)$/);
     if(!m)return;
-
+    if(!ALL.length)return;
     var x=ALL.find(function(p){
       return String(p.id)===m[1];
     });
