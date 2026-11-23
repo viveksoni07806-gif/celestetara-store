@@ -440,7 +440,7 @@ if(cpn)applyC(cpn,true);
       return String(p.id)===m[1];
     });
 
-    if(!x||!x.video)return;
+    if(!x||!(x.video||x.video_url))return;
 
     var gm=document.getElementById("gm");
     if(!gm)return;
@@ -450,7 +450,7 @@ if(cpn)applyC(cpn,true);
 
     var v=document.createElement("video");
     v.id="product-video";
-    v.src=x.video;
+   v.src=x.video||x.video_url;
     v.controls=true;
     v.playsInline=true;
     v.preload="metadata";
