@@ -464,7 +464,7 @@ $("ins").innerHTML=Object.keys(I).map(function(k){return '<button class="it" dat
 $("qi").innerHTML=Object.keys(I).map(function(k){return '<button class="chip" data-qi="'+k+'">'+I[k][0]+'</button>'}).join("");
 $("qc").innerHTML=Object.keys(CG).map(function(k){return '<button class="chip" data-qc="'+k+'">'+CG[k]+'</button>'}).join("");
 $("jr").innerHTML=["How to care for your gemstone bracelet","Amethyst through the ages","Choosing a stone by intention"].map(function(t){return '<a class="ar" href="#" class="soon"><div class="ph" style="aspect-ratio:4/3">'+mn("#c9a96e")+'<small>Photo placeholder</small></div><h3>'+t+'</h3><p>Coming soon</p></a>'}).join("");
-$("ig").innerHTML=[0,1,2,3,4,5].map(function(i){return '<a class="ph" href="https://instagram.com/celestetara" target="_blank" rel="noopener" aria-label="Instagram post">'+mn(P[i].c)+'</a>'}).join("");
+$("ig").innerHTML=[0,1,2,3,4,5].map(function(i){return '<a class="ph" href="https://www.instagram.com/celestetara_/" target="_blank" rel="noopener" aria-label="Instagram post">'+mn(P[i].c)+'</a>'}).join("");
 var F={s:"",i:""},W={};
 function card(x){return '<article class="card"><div class="ph">'+mn(x.c)+'<button class="wish" data-w="'+x.id+'" aria-label="Wishlist">'+(W[x.id]?"♥":"♡")+'</button><small>Photo placeholder</small></div><h3>'+x.n+'</h3><p>'+I[x.i][0]+'</p><div class="pr"><b>'+fmt(x.p)+'</b><button class="add" data-a="'+x.id+'">Add to bag</button></div></article>'}
 function drawP(){var q=$("q").value.toLowerCase(),m=+$("pf").value||1e9,so=$("so").value;
