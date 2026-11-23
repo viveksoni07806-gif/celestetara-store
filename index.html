@@ -268,6 +268,34 @@ section:hover .h2::after {
   * {
     transition-duration: .01ms !important;
   }
+}/* ===== PREMIUM SCROLL REVEAL ===== */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .scroll-reveal {
+    transform: translateY(16px);
+    transition-duration: .55s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 </style>
 </head>
@@ -628,6 +656,48 @@ if(cpn)applyC(cpn,true);
   setTimeout(run,2500);
   setTimeout(run,5000);
 
+})();
+</script>
+
+<script>
+(function () {
+  const selector = "section, .card, .tile";
+
+  if (!("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  function reveal(element) {
+    if (element.classList.contains("scroll-reveal")) return;
+    element.classList.add("scroll-reveal");
+    observer.observe(element);
+  }
+
+  function scan(root) {
+    if (root.nodeType !== 1) return;
+    if (root.matches(selector)) reveal(root);
+    root.querySelectorAll(selector).forEach(reveal);
+  }
+
+  scan(document.body);
+
+  const mutationObserver = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      mutation.addedNodes.forEach(scan);
+    });
+  });
+
+  mutationObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 })();
 </script>
 </html>
