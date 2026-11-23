@@ -1,0 +1,1 @@
+{"name":"celestetara-store","version":"2.0.0","private":true,"engines":{"node":">=18"},"scripts":{"test":"node tests/static.test.js && node tests/api.test.js && node tests/e2e.test.js"}}
