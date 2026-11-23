@@ -430,6 +430,46 @@ $("bw").innerHTML=P.map(function(x){return '<button data-b="'+x.id+'" style="--c
 B=[];drawB();F={s:"",i:""};drawP();$("qr").innerHTML="";route()}
 fetch("/api/products").then(function(r){if(!r.ok)throw 0;return r.json()}).then(applyCatalog).catch(function(){});
 if(cpn)applyC(cpn,true);
-</script>
+</script><script>
+(function(){
+  function showProductVideo(){
+    var m=location.hash.match(/^#product-(\d+)$/);
+    if(!m)return;
+
+    var x=ALL.find(function(p){
+      return String(p.id)===m[1];
+    });
+
+    if(!x||!x.video)return;
+
+    var gm=document.getElementById("gm");
+    if(!gm)return;
+
+    var old=document.getElementById("product-video");
+    if(old)old.remove();
+
+    var v=document.createElement("video");
+    v.id="product-video";
+    v.src=x.video;
+    v.controls=true;
+    v.playsInline=true;
+    v.preload="metadata";
+    v.style.cssText="width:100%;max-height:450px;display:block;margin-top:15px;border-radius:12px;background:#000";
+
+    var thumbs=gm.parentNode.querySelector(".thumbs");
+    (thumbs||gm).insertAdjacentElement("afterend",v);
+  }
+
+  var target=document.getElementById("view");
+  if(target){
+    new MutationObserver(showProductVideo).observe(target,{
+      childList:true,
+      subtree:true
+    });
+  }
+
+  window.addEventListener("hashchange",showProductVideo);
+  setTimeout(showProductVideo,500);
+})();
 </body>
 </html>
