@@ -519,12 +519,13 @@ function fmt(x){return "₹"+x.toLocaleString("en-IN")}
 function bd(n,c,d,R){var s="",a,dm=d||Math.min(24,237/n*.95);R=R||42;for(var i=0;i<n;i++){a=i*2*Math.PI/n;s+='<span class="bead" style="--c:'+(Array.isArray(c)?c[i%c.length]:c)+';width:'+dm+'%;height:'+dm+'%;margin:-'+dm/2+'%;left:'+(50+R*Math.sin(a))+'%;top:'+(50-R*Math.cos(a))+'%"></span>'}return s}
 function mn(c){return '<div class="mn">'+bd(8,c,18,40)+'</div>'}
 
+
 var heroPhotos = [
-  "images/hero/rose-quartz.jpg",
-  "images/hero/pearl.jpg",
-  "images/hero/amethyst.jpg",
-  "images/hero/green-aventurine.jpg",
-  "images/hero/citrine.jpg"
+  "images/hero/rose-quartz.jpg.jpg",
+  "images/hero/pearl.jpg.jpg",
+  "images/hero/amethyst.jpg.jpg",
+  "images/hero/green-aventurine.jpg.jpg",
+  "images/hero/citrine.jpg.jpg"
 ];
 
 var heroIndex = 0;
@@ -535,6 +536,7 @@ $("hr").innerHTML = heroPhotos.map(function(src, i) {
 }).join("");
 
 var heroSlides = $("hr").querySelectorAll(".hero-slide");
+
 
 setInterval(function() {
   heroSlides[heroIndex].classList.remove("active");
