@@ -421,7 +421,7 @@ Object.keys(CAT).forEach(function(k){delete CAT[k]});Object.keys(SZ).forEach(fun
 var cs={};d.categories.forEach(function(c){cs[c.id]=c;CAT[c.slug]=[c.name,"Hand-picked pieces from CELESTETARA."];SZ[c.slug]=c.sizes&&c.sizes.length?c.sizes:["One size"]});
 ALL.length=0;P.length=0;
 d.products.forEach(function(p){var c=cs[p.category_id];if(!c)return;var e=p.sale_price!=null&&p.sale_price<p.regular_price?p.sale_price:p.regular_price;
-var o={id:p.id,n:esc(p.name),cat:c.slug,s:esc(p.stone||p.name),i:I[p.intention]?p.intention:"peace",g:p.tone||"soft",p:e,r:p.regular_price,st:p.in_stock===false?0:p.stock,c:p.color||"#c9a96e",imgs:p.images||[],desc:p.description||""};
+var o={id:p.id,n:esc(p.name),cat:c.slug,s:esc(p.stone||p.name),i:I[p.intention]?p.intention:"peace",g:p.tone||"soft",p:e,r:p.regular_price,st:p.in_stock===false?0:p.stock,c:p.color||"#c9a96e",imgs:p.images||[],desc:p.description||"",video:p.video_url||""};
 ALL.push(o);if(c.slug=="bracelets")P.push(o)});
 var f=document.querySelector("footer .fg div:nth-child(2)");
 if(f)d.categories.forEach(function(c){if(["bracelets","gemstones","trees"].indexOf(c.slug)<0)f.insertAdjacentHTML("beforeend",'<a href="#'+c.slug+'">'+esc(c.name)+'</a>')});
