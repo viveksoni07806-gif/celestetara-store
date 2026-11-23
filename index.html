@@ -93,6 +93,28 @@ footer{background:var(--black);color:var(--ivory);padding:54px 0 100px;font-size
 footer a{display:block;text-decoration:none;opacity:.75;padding:3px 0}footer a:hover{opacity:1;color:var(--gold)}
 footer h3{font-size:20px;margin-bottom:8px;color:var(--gold)}.small{margin-top:30px;font-size:12px;opacity:.6}
 .wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:#1f6b45;color:#fff;border-radius:999px;padding:13px 20px;text-decoration:none;font-size:14px;box-shadow:0 6px 24px #0007}
+
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:#1f6b45;color:#fff;border-radius:999px;padding:13px 20px;text-decoration:none;font-size:14px;box-shadow:0 6px 24px #0007}
+
+.ig-float {
+  position: fixed;
+  right: 20px;
+  bottom: calc(82px + env(safe-area-inset-bottom,0px));
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #833ab4, #e1306c, #f77737);
+  color: white;
+  z-index: 40;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  text-decoration: none;
+}
+
+#veil{position:fixed;inset:0;background:#000a;z-index:70;display:none}#veil.open{display:block}
+
 #veil{position:fixed;inset:0;background:#000a;z-index:70;display:none}#veil.open{display:block}
 #drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:80;transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) 22px calc(20px + env(safe-area-inset-bottom,0px))}
 #drawer.open{transform:none}
@@ -429,6 +451,17 @@ section:hover .h2::after {
 </div><p class="small">© CELESTETARA. Spiritual meanings are traditional beliefs, not medical advice. Razorpay Test Mode: no real money is charged.</p></div></footer>
 
 <a class="wa" href="https://wa.me/919056607806" target="_blank" rel="noopener">WhatsApp us</a>
+  <a class="ig-float"
+   href="https://www.instagram.com/celestetara_/"
+   target="_blank"
+   rel="noopener"
+   aria-label="Follow CELESTETARA on Instagram">
+  <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2">
+    <rect x="3" y="3" width="18" height="18" rx="5"/>
+    <circle cx="12" cy="12" r="4"/>
+    <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/>
+  </svg>
+</a>
 <div id="veil"></div>
 <aside id="drawer" role="dialog" aria-label="Shopping bag" aria-hidden="true">
 <div class="dh"><h2>Your bag</h2><button class="ico" id="cx" aria-label="Close" style="color:var(--ink)">✕</button></div>
