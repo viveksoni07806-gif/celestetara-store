@@ -274,6 +274,7 @@ section:hover .h2::after {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity .75s ease, transform .75s ease;
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
 .scroll-reveal.revealed {
@@ -675,10 +676,22 @@ if(cpn)applyC(cpn,true);
   }, { threshold: 0.08 });
 
   function reveal(element) {
-    if (element.classList.contains("scroll-reveal")) return;
-    element.classList.add("scroll-reveal");
-    observer.observe(element);
+  if (element.classList.contains("scroll-reveal")) return;
+
+  let delay = 0;
+
+  if (element.matches(".card, .tile") && element.parentElement) {
+    const siblings = Array.from(element.parentElement.children)
+      .filter(item => item.matches(".card, .tile"));
+
+    const index = siblings.indexOf(element);
+    delay = Math.min(index * 100, 400);
   }
+
+  element.style.setProperty("--reveal-delay", delay + "ms");
+  element.classList.add("scroll-reveal");
+  observer.observe(element);
+}
 
   function scan(root) {
     if (root.nodeType !== 1) return;
